@@ -1,1 +1,117 @@
-<p>auth works!</p>
+<section class="section-auth">
+  <div class="section-auth__block">
+    <h1 class="block__title">
+      {{
+        (currentRoute$ | async) === authRoutes.signUp ? "Sing Up" : "Sing In"
+      }}
+    </h1>
+    <div class="block__info">
+      <img
+        *ngIf="(currentRoute$ | async) === authRoutes.signUp"
+        class="info__img"
+        src="assets\scss\images\sign-up.png"
+        alt="image"
+      />
+      <img
+        *ngIf="(currentRoute$ | async) === authRoutes.signIn"
+        class="info__img"
+        src="assets\scss\images\sign-in.png"
+        alt="image"
+      />
+
+      <div class="block__forms">
+        <form
+          *ngIf="(currentRoute$ | async) === authRoutes.signIn"
+          class="forms__item"
+          [formGroup]="signInForm"
+        >
+          <mat-form-field class="item__field">
+            <mat-label>Email</mat-label>
+            <input
+              type="email"
+              formControlName="email"
+              matInput
+              placeholder="Email"
+            />
+          </mat-form-field>
+
+          <mat-form-field class="item__field">
+            <mat-label>Password</mat-label>
+            <input
+              type="password"
+              formControlName="password"
+              matInput
+              placeholder="Confirm Password"
+            />
+          </mat-form-field>
+
+          <mat-checkbox class="item__checkbox">Remember me!</mat-checkbox>
+
+          <button (click)="signIn()" class="item__button" type="submit">
+            Sign In
+          </button>
+
+          <p class="item__text">
+            Don’t have an account
+            <span (click)="navigateTo('sign-up')" class="item__text text__span"
+              >Sign-up</span
+            >
+          </p>
+        </form>
+
+        <form
+          *ngIf="(currentRoute$ | async) === authRoutes.signUp"
+          class="forms__item"
+          [formGroup]="signInForm"
+        >
+          <mat-form-field class="item__field">
+            <mat-label>Email</mat-label>
+            <input
+              type="email"
+              formControlName="email"
+              matInput
+              placeholder="Email"
+            />
+          </mat-form-field>
+
+          <mat-form-field class="item__field">
+            <mat-label>Password</mat-label>
+            <input
+              type="password"
+              formControlName="password"
+              matInput
+              placeholder="Password"
+            />
+          </mat-form-field>
+
+          <mat-form-field class="item__field">
+            <mat-label>Confirm Password</mat-label>
+            <input
+              type="password"
+              formControlName="confirmPassword"
+              matInput
+              placeholder="Confirm Password"
+            />
+            <mat-error
+              *ngIf="
+                signInForm.get('confirmPassword').hasError('passwordMismatch')
+              "
+              >Passwords do not match!</mat-error
+            >
+          </mat-form-field>
+
+          <button (click)="signUp()" class="item__button" type="submit">
+            Sign Up
+          </button>
+
+          <p class="item__text">
+            Already have an account
+            <span (click)="navigateTo('sign-in')" class="item__text text__span"
+              >Sign-in</span
+            >
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
