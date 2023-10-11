@@ -1,0 +1,20 @@
+<div class="message">
+  <div class="message-main">
+    <div class="message-img">
+      <img [src]="user.pictureUrl">
+    </div>
+    <div class="message-info">
+      <div class="message-info-name">{{user.userName}}</div>
+      <div class="message-info-text">{{user.userMessage}}</div>
+    </div>
+  </div>
+
+  <div class="message-notification">
+    <div class="message-notification-time">{{user.timeSending}}</div>
+
+    <div class="message-notification-badge" *ngIf="user.messageCount">{{user.messageCount}}</div>
+    <div class="message-notification-icon" *ngIf="!user.messageCount">
+      <mat-icon [svgIcon]="user.messageReaded ? 'read-mess' : 'not-read'"></mat-icon>
+    </div>
+  </div>
+</div>

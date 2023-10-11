@@ -1,0 +1,62 @@
+.message {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  &-img {
+    width: 58px;
+    height: 58px;
+
+    img {
+      object-fit: scale-down;
+      width: 100%;
+      border-radius: 58px;
+    }
+  }
+
+  &-main {
+    display: flex;
+    gap: 10px;
+  }
+
+  &-info {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+
+    &-name {
+      font-weight: 700;
+      font-size: 14px;
+    }
+  }
+
+  &-notification {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+
+    &-time {
+      font-size: 13px;
+      color: var(--base-grey)
+    }
+
+    .mat-icon {
+      color: var(--main)
+    }
+
+    &-badge {
+      display: flex;
+      width: 24px;
+      height: 24px;
+      justify-content: center;
+      align-items: center;
+      border-radius: 28px;
+      background-color: var(--warn);
+      font-size: 13px;
+      color: white;
+      font-weight: 500;
+    }
+  }
+}

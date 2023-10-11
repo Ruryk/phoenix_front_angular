@@ -1,0 +1,7 @@
+<div class="custom-input" [ngClass]="control && (!control.valid && control.dirty) ? 'error-input' : ''">
+  <div class="input-wrap">
+    <mat-icon svgIcon="search"></mat-icon>
+    <input type="text" class="input" placeholder="{{placeholder | translate}}" (input)=valueChange($event)>
+  </div>
+  <p *ngIf="control && (!control.valid && control.dirty)" class="error-input-text">{{getErrorMessage()}}></p>
+</div>
