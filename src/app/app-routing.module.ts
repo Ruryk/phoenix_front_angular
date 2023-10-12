@@ -4,6 +4,11 @@ import { MainComponent } from './shared/components/main/main.component';
 
 const routes: Routes = [
   {
+    path: 'auth',
+    loadChildren: () =>
+      import('./modules/auth/auth.module').then((m) => m.AuthModule),
+  },
+  {
     path: '',
     component: MainComponent,
     children: [
@@ -11,11 +16,6 @@ const routes: Routes = [
         path: '',
         pathMatch: 'full',
         redirectTo: 'chat'
-      },
-      {
-        path: 'auth',
-        loadChildren: () =>
-          import('./modules/auth/auth.module').then((m) => m.AuthModule),
       },
       {
         path: 'chat',

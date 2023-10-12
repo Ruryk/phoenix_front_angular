@@ -6,6 +6,7 @@ import { EffectsModule } from '@ngrx/effects';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { LoaderComponent } from './shared/components/loader/loader.component';
 import { MainSidebarComponent } from './shared/components/main-sidebar/main-sidebar.component';
 import { MaterialModule } from './modules/material/materials.module';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
@@ -22,7 +23,8 @@ export function HttpLoaderFactory(http: HttpClient) {
   declarations: [
     AppComponent,
     MainSidebarComponent,
-    MainComponent
+    MainComponent,
+    LoaderComponent
   ],
   imports: [
     BrowserModule,
