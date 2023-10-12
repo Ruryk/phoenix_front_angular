@@ -1,0 +1,16 @@
+<div class="chat-bar">
+  <div class="chat-bar-title">
+    <div class="chat-bar-title-text">{{'MESSAGES' | translate}}</div>
+    <div class="chat-bar-title-icon">
+      <mat-icon svgIcon="dots"></mat-icon>
+    </div>
+  </div>
+
+  <div class="chat-bar-action">
+    <app-input [formControl]="searchChatControl"></app-input>
+    <button class="btn">
+      <mat-icon svgIcon="plus"></mat-icon>
+      {{'START_NEW_CHAT' | translate}}</button>
+  </div>
+  <app-user-chat-message *ngFor="let user of CMockUserMessages" [user]="user"></app-user-chat-message>
+</div>

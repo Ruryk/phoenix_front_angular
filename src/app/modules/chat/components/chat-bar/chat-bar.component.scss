@@ -1,0 +1,35 @@
+.chat-bar {
+  width: 320px;
+  border-right: 1px solid var(--additional-grey);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+
+  &-title {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    &-text {
+      font-size: 24px;
+      font-weight: 700;
+    }
+
+    &-icon {
+      color: var(--additional-grey);
+      cursor: pointer;
+    }
+  }
+
+  .btn {
+    .mat-icon {
+      padding: 0 10px;
+      color: white;
+    }
+
+    &:hover .mat-icon {
+      color: var(--main)
+    }
+  }
+}
