@@ -6,6 +6,8 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 
 import { AuthRoutingModule } from './auth-routing.module';
 import { AuthComponent } from './components/auth/auth.component';
+import { InputComponent } from '../../shared/components/input/input.component';
+import { TranslateModule } from '@ngx-translate/core';
 
 @NgModule({
   declarations: [AuthComponent],
@@ -15,6 +17,8 @@ import { AuthComponent } from './components/auth/auth.component';
     ReactiveFormsModule,
     MatInputModule,
     MatCheckboxModule,
+    InputComponent,
+    TranslateModule,
   ],
 })
 export class AuthModule {}

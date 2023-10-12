@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 
-import { IAuthUser } from 'src/app/shared/interfaces/auth.interfaces';
+import { IAuthResponse, IAuthUser } from 'src/app/shared/interfaces/auth.interfaces';
+import { Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -8,13 +9,16 @@ import { IAuthUser } from 'src/app/shared/interfaces/auth.interfaces';
 export class AuthService {
   // private apiUrl: string = environment.apiUrl;
 
-  public signIn(user: IAuthUser): void {
-    console.log(user);
+  public signIn(user: IAuthUser): Observable<IAuthResponse> {
     this.setUserToLocalStorage(user);
+    const userWithToken = {...user, token: 'test-token'};
+    return of(userWithToken);
   }
 
-  public signUp(user: IAuthUser): void {
+  public signUp(user: IAuthUser): Observable<IAuthResponse> {
     this.setUserToLocalStorage(user);
+    const userWithToken = {...user, token: 'test-token'};
+    return of(userWithToken);
   }
 
   public setUserToLocalStorage(user: IAuthUser) {

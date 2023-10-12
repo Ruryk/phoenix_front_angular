@@ -1,36 +1,20 @@
-import { Component, OnInit, DestroyRef } from '@angular/core';
+import { Component, DestroyRef, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, of } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 import { AuthService } from 'src/app/services/auth/auth.service';
-import { passwordMatchValidator } from 'src/app/shared/utils/auth.functions';
+import { EAuthRoutes } from '../../enums/auth.enums';
 
 @Component({
   templateUrl: './auth.component.html',
   styleUrls: ['./auth.component.scss'],
 })
 export class AuthComponent implements OnInit {
-  public authRoutes: { signIn: string; signUp: string } = {
-    signIn: 'sign-in',
-    signUp: 'sign-up',
-  };
 
-  public signUpForm: FormGroup = this.fb.group({
-    email: ['', [Validators.required, Validators.email]],
-    password: ['', [Validators.required, Validators.minLength(6)]],
-  });
-
-  public signInForm: FormGroup = this.fb.group(
-    {
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required, Validators.minLength(6)]],
-      confirmPassword: ['', [Validators.required, Validators.minLength(6)]],
-    },
-    { validator: passwordMatchValidator('password', 'confirmPassword') }
-  );
-
+  public signInPage: boolean;
+  public authForm: FormGroup;
   public currentRoute$: Observable<string> = of(
     this.activatedRoute.snapshot.routeConfig.path
   );
@@ -44,28 +28,53 @@ export class AuthComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.initForm();
     this.checkIsUserAuthorized();
 
     this.currentRoute$
       .pipe(takeUntilDestroyed(this.destroyRef))
-      .subscribe((data) => data);
+      .subscribe((data) => {
+        this.signInPage = data === EAuthRoutes.signIn;
+      });
   }
 
-  public signUp() {
-    this.authService.signUp({
-      email: this.signUpForm.controls['email'].value,
-      password: this.signUpForm.controls['password'].value,
+  initForm(): void {
+    this.authForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', [Validators.required, Validators.minLength(6)]]
     });
+
+    if (!this.signInPage) {
+      this.authForm.addControl('confirmPassword', this.fb.control('', [Validators.required, Validators.minLength(6)]));
+      this.authForm.setValidators([this.passwordMatchValidator('password', 'confirmPassword')]);
+    }
   }
 
-  public signIn() {
-    this.authService.signIn({
-      email: this.signInForm.controls['email'].value,
-      password: this.signInForm.controls['password'].value,
-    });
+  passwordMatchValidator(controlName: string, matchingControlName: string): any {
+    return (group: FormGroup) => {
+      const control = group.controls[controlName];
+      const matchingControl = group.controls[matchingControlName];
+
+      if (control.value !== matchingControl.value) {
+        matchingControl.setErrors({passwordMismatch: true});
+      } else {
+        matchingControl.setErrors(null);
+      }
+    };
   }
 
-  public navigateTo(path: string): void {
+  public login() {
+    const formValue = this.authForm.value;
+    if (this.signInPage) {
+      this.authService.signUp(formValue);
+      return;
+    }
+    delete formValue['confirmPassword'];
+    this.authService.signIn(this.authForm.value);
+  }
+
+  public navigateTo(): void {
+    const path = this.signInPage ? EAuthRoutes.signUp : EAuthRoutes.signIn;
     this.router.navigate([`/auth/${path}`]);
   }
 

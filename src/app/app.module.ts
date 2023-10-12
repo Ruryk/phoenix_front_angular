@@ -1,8 +1,6 @@
 import { NgModule, TransferState } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { StoreModule } from '@ngrx/store';
-import { EffectsModule } from '@ngrx/effects';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -14,6 +12,7 @@ import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
 import { environment } from '../environment/environment';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { MainComponent } from './shared/components/main/main.component';
+import { AppStoreModule } from './store/store.module';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -32,8 +31,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     BrowserAnimationsModule,
     MaterialModule,
     HttpClientModule,
-    StoreModule.forRoot({}, {}),
-    EffectsModule.forRoot([]),
+    AppStoreModule,
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
