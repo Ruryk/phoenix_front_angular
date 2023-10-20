@@ -1,5 +1,7 @@
-<!-- <app-loader></app-loader> -->
+<div class="app">
+  <app-loader class="app__loader" *ngIf="isLoaderOn$ | async"></app-loader>
 
-<main class="main">
-  <router-outlet></router-outlet>
-</main>
+  <main class="app__main">
+    <router-outlet></router-outlet>
+  </main>
+</div>
