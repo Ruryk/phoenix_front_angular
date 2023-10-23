@@ -13,6 +13,7 @@ import { environment } from 'src/environment/environment';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { MainComponent } from './shared/components/main/main.component';
 import { AppStoreModule } from './store/store.module';
+import { LangSwitcherComponent } from './shared/components/lang-switcher/lang-switcher.component';
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -40,6 +41,7 @@ export function HttpLoaderFactory(http: HttpClient) {
       },
       defaultLanguage: environment.defaultLanguage,
     }),
+    LangSwitcherComponent,
   ],
   exports: [TranslateModule],
   providers: [],

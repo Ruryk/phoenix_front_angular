@@ -1,0 +1,9 @@
+<div class="lng-switcher">
+  <a class="item"
+     *ngFor="let ln of languages; let last = last"
+     [class.active]="ln === currentLang"
+     (click)="changeLang(ln)">
+    {{ln}}
+    <span *ngIf="!last" class="separator">/</span>
+  </a>
+</div>

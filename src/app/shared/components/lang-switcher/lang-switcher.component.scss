@@ -1,0 +1,16 @@
+.lng-switcher {
+  margin-bottom: 20px;
+
+  .item {
+    color: black;
+    cursor: pointer;
+
+    .separator {
+      color: black !important;
+    }
+
+    &.active {
+      color: var(--main);
+    }
+  }
+}

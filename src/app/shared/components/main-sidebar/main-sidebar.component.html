@@ -12,6 +12,7 @@
     </div>
   </div>
 
+  <app-lang-switcher></app-lang-switcher>
   <div class="sidebar-nav-bottom">
     <div class="sidebar-nav-item" *ngFor="let tab of sidebarBottomNav"
          (click)="!tab ? logout() : goToPage(tab.path)"
