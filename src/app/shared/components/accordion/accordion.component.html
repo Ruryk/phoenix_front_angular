@@ -39,7 +39,7 @@
   <div class="accordion-images">
     <div class="image-item" *ngFor="let image of visibleFiles; let i = index"
          [ngClass]="(i === 5 && panelData.length > 5) ? 'show-more-images' : ''">
-      <img [src]="image.pictureUrl || ''">
+      <img [src]="image.pictureUrl" imgDir onErrorSrc="./assets/images/empty-image.jpeg" loading="lazy">
     <div class="show-images-action" *ngIf="i === 5 && panelData.length > 5">{{calcAdditionalImages()}}+</div>
     </div>
   </div>

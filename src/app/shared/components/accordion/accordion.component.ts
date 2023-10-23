@@ -4,12 +4,13 @@ import { MaterialModule } from '../../../modules/material/materials.module';
 import { IChatFile } from '../../../modules/chat/interfaces/chat-user.interfaces';
 import { NgClass, NgForOf, NgIf, NgSwitch, NgSwitchCase, NgTemplateOutlet } from '@angular/common';
 import { EAccordionFileType } from '../../enums/accordion.enum';
+import { ImageDirective } from '../../directives/image.directive';
 
 @Component({
   standalone: true,
   selector: 'app-accordion',
   templateUrl: './accordion.component.html',
-  imports: [TranslateModule, MaterialModule, NgIf, NgForOf, NgSwitch, NgTemplateOutlet, NgSwitchCase, NgClass],
+  imports: [TranslateModule, MaterialModule, NgIf, NgForOf, NgSwitch, NgTemplateOutlet, NgSwitchCase, NgClass, ImageDirective],
   styleUrls: ['./accordion.component.scss']
 })
 export class AccordionComponent implements OnInit {

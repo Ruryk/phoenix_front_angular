@@ -2,7 +2,7 @@
 
   <div class="sidebar-nav">
     <div class="sidebar-user-img">
-      <img src="./assets/images/user-img.svg">
+      <img src="./assets/images/user-img.svg" imgDir loading="lazy">
     </div>
     <div class="sidebar-nav-item" *ngFor="let tab of sidebarNav;let idx = index"
          [routerLink]="tab.path"

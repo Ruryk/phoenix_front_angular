@@ -11,6 +11,7 @@ import { TranslateModule } from '@ngx-translate/core';
 import { AccordionComponent } from '../accordion/accordion.component';
 import { MaterialModule } from '../../../modules/material/materials.module';
 import { EAccordionFileType } from '../../enums/accordion.enum';
+import { ImageDirective } from '../../directives/image.directive';
 
 @Component({
   standalone: true,
@@ -25,7 +26,8 @@ import { EAccordionFileType } from '../../enums/accordion.enum';
     AsyncPipe,
     MaterialModule,
     TranslateModule,
-    AccordionComponent
+    AccordionComponent,
+    ImageDirective
   ],
   styleUrls: ['./user-info-card.component.scss']
 })
