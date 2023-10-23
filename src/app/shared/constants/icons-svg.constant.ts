@@ -10,4 +10,7 @@ export const CSvgIcons = [
   {name: 'plus', path: 'assets/images/icons/plus-icon.svg'},
   {name: 'not-read', path: 'assets/images/icons/not-read-icon.svg'},
   {name: 'read-mess', path: 'assets/images/icons/read-icon.svg'},
+  {name: 'close', path: 'assets/images/icons/close.svg'},
+  {name: 'file', path: 'assets/images/icons/file-icon.svg'},
+  {name: 'block', path: 'assets/images/icons/block-icon.svg'},
 ]

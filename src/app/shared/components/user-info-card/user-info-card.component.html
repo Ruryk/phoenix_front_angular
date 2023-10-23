@@ -1,0 +1,34 @@
+<div class="card" *ngIf="(user$ | async) as user">
+  <div class="card-main">
+    <div class="card-main-action">
+      <div class="action-wrap">
+        <mat-icon svgIcon="close"></mat-icon>
+      </div>
+    </div>
+    <div class="card-main-img">
+      <img [src]="user.pictureUrl" alt="photo">
+    </div>
+    <div class="card-main-name">{{user.userName}}</div>
+    <div class="card-main-tag">{{user.userTagName}}</div>
+  </div>
+
+  <div class="card-notification">
+    <app-toggle-btn [text]="'NOTIFICATIONS'" [isChecked]="user.notificationsAllowed"></app-toggle-btn>
+  </div>
+
+  <div class="card-files">
+    <app-accordion [headLabel]="'RECENT_FILES'" [subLabel]="checkFilesSize(user.chatFiles)"
+                    [panelData]="user.chatFiles"></app-accordion>
+  </div>
+
+  <div class="card-files">
+    <app-accordion [headLabel]="'IMAGES'" [subLabel]="checkFilesSize(user.chatImages)"
+                    [panelData]="user.chatImages" [dataType]="EAccordionFileType.images"></app-accordion>
+  </div>
+  <div class="card-action-block">
+    <button class="btn">
+      <mat-icon svgIcon="block"></mat-icon>
+      <p>{{'BLOCK' | translate}} {{user.userName}}</p>
+    </button>
+  </div>
+</div>

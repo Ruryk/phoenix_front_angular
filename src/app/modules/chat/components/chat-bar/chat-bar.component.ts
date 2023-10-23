@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, UntypedFormControl } from '@angular/forms';
 import { CMockUserMessages } from '../../../../mockData/mock.user-messages';
+import { IMessageUser } from '../../../../shared/interfaces/user.interface';
 
 @Component({
   selector: 'app-chat-bar',
@@ -13,4 +14,8 @@ export class ChatBarComponent {
   constructor() {}
 
   protected readonly CMockUserMessages = CMockUserMessages;
+
+  openUserCard(user: IMessageUser): void {
+
+  }
 }

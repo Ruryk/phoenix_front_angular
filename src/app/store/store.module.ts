@@ -1,9 +1,10 @@
-import { isDevMode, NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { EffectsModule } from '@ngrx/effects';
 import { AuthEffects } from './auth/auth.effects';
 import { authFeatureKey, authReducer } from './auth/auth.reducer';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { chatFeatureKey, chatReducer } from './chat/chat.reducer';
 
 @NgModule({
   imports: [
@@ -12,8 +13,9 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
     ]),
     StoreModule.forRoot({
       [authFeatureKey]: authReducer,
+      [chatFeatureKey]: chatReducer,
     }),
-    StoreDevtoolsModule.instrument({maxAge: 25, logOnly: !isDevMode()}),
+    StoreDevtoolsModule.instrument({maxAge: 25}),
   ],
   providers: [
     AuthEffects
