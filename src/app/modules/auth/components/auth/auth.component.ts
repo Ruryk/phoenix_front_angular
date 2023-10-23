@@ -6,6 +6,8 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 import { AuthService } from 'src/app/services/auth/auth.service';
 import { EAuthRoutes } from '../../enums/auth.enums';
+import { Store } from '@ngrx/store';
+import { signIn, signUp } from '../../../../store/auth/auth.actions';
 
 @Component({
   templateUrl: './auth.component.html',
@@ -24,7 +26,8 @@ export class AuthComponent implements OnInit {
     private router: Router,
     private activatedRoute: ActivatedRoute,
     private destroyRef: DestroyRef,
-    private authService: AuthService
+    private authService: AuthService,
+    private store: Store
   ) {}
 
   ngOnInit(): void {
@@ -66,11 +69,11 @@ export class AuthComponent implements OnInit {
   public login() {
     const formValue = this.authForm.value;
     if (this.signInPage) {
-      this.authService.signUp(formValue);
+      this.store.dispatch(signIn(formValue));
       return;
     }
     delete formValue['confirmPassword'];
-    this.authService.signIn(this.authForm.value);
+    this.store.dispatch(signUp(formValue));
   }
 
   public navigateTo(): void {
