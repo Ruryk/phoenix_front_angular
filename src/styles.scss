@@ -1,34 +1,4 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import "/src/assets/scss/reset";
-@import "/src/assets/scss/variables";
-
-* {
-  box-sizing: border-box;
-}
-
-.btn {
-  width: 100%;
-  padding: 12px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  background-color: var(--main);
-  border: 1px solid transparent;
-  border-radius: 52px;
-  cursor: pointer;
-  transition: all .3s ease-in-out;
-
-  &:hover {
-    color: var(--main);
-    background-color: white;
-    border: 1px solid var(--main);
-
-    .mat-icon {
-      color: var(--main);
-    }
-  }
-}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
