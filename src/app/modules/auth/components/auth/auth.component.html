@@ -1,124 +1,36 @@
 <section class="section-auth">
   <div class="section-auth__block">
     <h1 class="block__title">
-      {{
-        (currentRoute$ | async) === authRoutes.signUp
-          ? EAuthTemplateText.signUpText
-          : EAuthTemplateText.signInText
-      }}
+      {{signInPage ? ('SIGN_IN' | translate) : ('SIGN_UP' | translate)}}
     </h1>
     <div class="block__info">
       <img
         class="info__img"
-        [src]="
-          (currentRoute$ | async) === authRoutes.signUp
-            ? EAuthImages.signUpImage
-            : EAuthImages.signInImage
-        "
+        [src]="signInPage ? 'assets\\scss\\images\\sign-in.png' : 'assets\\scss\\images\\sign-up.png'"
         alt="image"
       />
 
       <div class="block__forms">
-        <form
-          *ngIf="(currentRoute$ | async) === authRoutes.signIn"
-          class="forms__item"
-          [formGroup]="signInForm"
+        <form class="forms__item" [formGroup]="authForm"
         >
-          <mat-form-field class="item__field">
-            <mat-label>Email</mat-label>
-            <input
-              type="email"
-              formControlName="email"
-              matInput
-              placeholder="Email"
-            />
-          </mat-form-field>
+          <app-input [inputType]="'email'" [label]="'EMAIL'" [placeholder]="'ENTER_EMAIL'"
+                     formControlName="email" [needStyles]="true"></app-input>
+          <app-input [inputType]="'password'" [label]="'PASSWORD'" [placeholder]="'ENTER_PASSWORD'"
+                     formControlName="password" [needStyles]="true"></app-input>
+          <app-input *ngIf="!signInPage"
+                     [inputType]="'password'" [label]="'CONFIRM_PASSWORD'" [placeholder]="'CONFIRM_PASSWORD'"
+                     formControlName="confirmPassword" [needStyles]="true"></app-input>
 
-          <mat-form-field class="item__field">
-            <mat-label>Password</mat-label>
-            <input
-              type="password"
-              formControlName="password"
-              matInput
-              placeholder="Confirm Password"
-            />
-          </mat-form-field>
+          <mat-checkbox *ngIf="signInPage" class="item__checkbox">{{'REMEMBER_ME' | translate}}</mat-checkbox>
 
-          <mat-checkbox class="item__checkbox">Remember me!</mat-checkbox>
-
-          <button
-            [disabled]="!signInForm.valid"
-            (click)="signIn()"
-            class="item__button"
-            type="submit"
-          >
-            Sign In
+          <button [disabled]="!authForm.valid" (click)="login()" class="item__button" type="submit">
+            {{signInPage ? ('SIGN_IN' | translate) : ('SIGN_UP' | translate)}}
           </button>
 
           <p class="item__text">
-            Don’t have an account?
-            <span
-              (click)="navigateTo(EAuthRoutes.signUp)"
-              class="item__text text__span"
-              >Sign-up</span
-            >
-          </p>
-        </form>
-
-        <form
-          *ngIf="(currentRoute$ | async) === authRoutes.signUp"
-          class="forms__item"
-          [formGroup]="signUpForm"
-        >
-          <mat-form-field class="item__field">
-            <mat-label>Email</mat-label>
-            <input
-              type="email"
-              formControlName="email"
-              matInput
-              placeholder="Email"
-            />
-          </mat-form-field>
-
-          <mat-form-field class="item__field">
-            <mat-label>Password</mat-label>
-            <input
-              type="password"
-              formControlName="password"
-              matInput
-              placeholder="Password"
-            />
-          </mat-form-field>
-
-          <mat-form-field class="item__field">
-            <mat-label>Confirm Password</mat-label>
-            <input
-              type="password"
-              formControlName="confirmPassword"
-              matInput
-              placeholder="Confirm Password"
-            />
-            <mat-error *ngIf="passwordMismatch"
-              >Passwords do not match!</mat-error
-            >
-          </mat-form-field>
-
-          <button
-            [disabled]="!signUpForm.valid"
-            (click)="signUp()"
-            class="item__button"
-            type="submit"
-          >
-            Sign Up
-          </button>
-
-          <p class="item__text">
-            Have already an account?
-            <span
-              (click)="navigateTo(EAuthRoutes.signIn)"
-              class="item__text text__span"
-              >Sign-in</span
-            >
+            {{signInPage ? ('DONT_HAVE_AN_ACCOUNT' | translate ): ('ALREADY_HAVE_AN_ACCOUNT' | translate)}}
+            <span (click)="navigateTo()" class="item__text text__span"
+            >{{signInPage ? ('SIGN_UP' | translate) : ('SIGN_IN' | translate)}}</span>
           </p>
         </form>
       </div>

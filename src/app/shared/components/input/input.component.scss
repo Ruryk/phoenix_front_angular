@@ -28,6 +28,17 @@
 }
 
 .error-input {
+
+  ::ng-deep .mat-mdc-form-field-infix {
+    .mdc-floating-label {
+      color: var(--warn) !important;
+    }
+
+    .mdc-text-field__input {
+      color: var(--warn);
+    }
+  }
+
   .input {
     border: 1px solid var(--warn);
 
@@ -47,4 +58,19 @@
     color: var(--warn);
     font-size: 10px;
   }
+}
+
+.item__field {
+  max-width: 100%;
+  width: 100%;
+}
+
+.mat-mdc-form-field {
+  position: relative;
+}
+
+.mat-mdc-form-field-hint {
+  position: absolute;
+  top: -25px;
+  font-size: 11px;
 }

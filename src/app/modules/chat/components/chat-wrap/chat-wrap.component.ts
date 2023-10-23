@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CMockUserCard } from '../../../../mockData/mock-user-card';
 
 @Component({
   selector: 'app-chat-wrap',
@@ -7,4 +8,5 @@ import { Component } from '@angular/core';
 })
 export class ChatWrapComponent {
 
+  protected readonly CMockUserCard = CMockUserCard;
 }

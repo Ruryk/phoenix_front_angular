@@ -1,4 +1,26 @@
 {
   "MESSAGES": "Повідомлення",
-  "START_NEW_CHAT": "Почати новий чат"
+  "START_NEW_CHAT": "Почати новий чат",
+  "SIGN_UP": "Реєстрація",
+  "SIGN_IN": "Вхід",
+  "EMAIL": "Пошта",
+  "ENTER_EMAIL": "Введіть пошту",
+  "PASSWORD": "Пароль",
+  "ENTER_PASSWORD": "Введіть пароль",
+  "CONFIRM_PASSWORD": "Підтвердіть пароль",
+  "ALREADY_HAVE_AN_ACCOUNT": "Вже є аккаунт?",
+  "DONT_HAVE_AN_ACCOUNT": "Немає аккаунту?",
+  "REMEMBER_ME": "Запам'ятати мене!",
+  "THIS_VALUE_IS_REQUIRED": "Це поле є обов'язковим",
+  "MINIMIMUM_LENGTH_NOT_MET": "Мінімальна довжина не дотримана",
+  "PASSWORDS_DO_NOT_MATCH": "Паролі не збігаються!",
+  "NOTIFICATIONS": "Cповіщення",
+  "FILE": "<bdi> ({{number}} файл)</bdi>",
+  "UA_FAILU": "<bdi> ({{number}} файли)</bdi>",
+  "FILES": "<bdi> ({{number}} файлів)</bdi>",
+  "RECENT_FILES": "Останні файли",
+  "SHOW_MORE": "Показати більше",
+  "HIDE": "Сховати",
+  "IMAGES": "Зображення",
+  "BLOCK": "Заблокувати"
 }

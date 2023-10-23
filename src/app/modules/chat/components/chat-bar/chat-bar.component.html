@@ -12,5 +12,7 @@
       <mat-icon svgIcon="plus"></mat-icon>
       {{'START_NEW_CHAT' | translate}}</button>
   </div>
-  <app-user-chat-message *ngFor="let user of CMockUserMessages" [user]="user"></app-user-chat-message>
+  <div class="user-chat" (click)="openUserCard(user)" *ngFor="let user of CMockUserMessages">
+    <app-user-chat-message [user]="user"></app-user-chat-message>
+  </div>
 </div>
