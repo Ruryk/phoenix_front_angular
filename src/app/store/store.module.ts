@@ -26,7 +26,7 @@ export interface IAppState {
       [chatFeatureKey]: chatReducer,
     }),
     StoreDevtoolsModule.instrument({maxAge: 25}),
-  ],
+  ]
 })
 export class AppStoreModule {
 }
