@@ -47,10 +47,11 @@ export class AuthComponent implements OnInit {
       password: ['', [Validators.required, Validators.minLength(6)]]
     });
 
-    if (!this.signInPage) {
+    if (this.signInPage) {
       this.authForm.addControl('confirmPassword', this.fb.control('', [Validators.required, Validators.minLength(6)]));
       this.authForm.setValidators([this.passwordMatchValidator('password', 'confirmPassword')]);
     }
+    console.log(this.authForm)
   }
 
   passwordMatchValidator(controlName: string, matchingControlName: string): any {
@@ -69,10 +70,11 @@ export class AuthComponent implements OnInit {
   public login() {
     const formValue = this.authForm.value;
     if (this.signInPage) {
+      delete formValue['confirmPassword'];
+      console.log(formValue)
       this.store.dispatch(signIn(formValue));
       return;
     }
-    delete formValue['confirmPassword'];
     this.store.dispatch(signUp(formValue));
   }
 

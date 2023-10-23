@@ -23,7 +23,7 @@
 
           <mat-checkbox *ngIf="signInPage" class="item__checkbox">{{'REMEMBER_ME' | translate}}</mat-checkbox>
 
-          <button (click)="login()" class="item__button" type="submit">
+          <button [disabled]="!authForm.valid" (click)="login()" class="item__button" type="submit">
             {{signInPage ? ('SIGN_IN' | translate) : ('SIGN_UP' | translate)}}
           </button>
 
