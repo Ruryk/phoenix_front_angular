@@ -2,7 +2,7 @@ import { Injectable, inject } from '@angular/core';
 import { Observable, of, switchMap } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 
-import { environment } from 'src/app/environments/environment.prod';
+import { environment } from 'src/environment/environment';
 import { IAuthUser } from 'src/app/shared/interfaces/auth.interfaces';
 import { EStorageKeys } from 'src/app/shared/enums/auth.enums';
 import { Router } from '@angular/router';

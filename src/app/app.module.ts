@@ -10,13 +10,12 @@ import { AppComponent } from './app.component';
 import { LoaderComponent } from './shared/components/loader/loader.component';
 import { AuthEffects } from './store/auth/auth.effects';
 import { LoaderEffects } from './store/loader/loader.effects';
-import { environment } from './environments/environment.prod';
 import { appState } from './store/app.state';
 import { MainSidebarComponent } from './shared/components/main-sidebar/main-sidebar.component';
 import { MaterialModule } from './modules/material/materials.module';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { environment } from '../environment/environment';
+import { environment } from 'src/environment/environment';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { MainComponent } from './shared/components/main/main.component';
 
@@ -29,7 +28,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppComponent,
     MainSidebarComponent,
     MainComponent,
-    LoaderComponent
+    LoaderComponent,
   ],
   imports: [
     BrowserModule,
@@ -39,15 +38,15 @@ export function HttpLoaderFactory(http: HttpClient) {
     HttpClientModule,
     StoreModule.forRoot(appState),
     EffectsModule.forRoot([AuthEffects, LoaderEffects]),
-  ],
-  TranslateModule.forRoot({
+    TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
         useFactory: HttpLoaderFactory,
-        deps: [HttpClient, TransferState]
+        deps: [HttpClient, TransferState],
       },
-      defaultLanguage: environment.defaultLanguage
+      defaultLanguage: environment.defaultLanguage,
     }),
+  ],
   providers: [
     provideStoreDevtools({
       maxAge: 25,
@@ -58,5 +57,4 @@ export function HttpLoaderFactory(http: HttpClient) {
   exports: [TranslateModule],
   bootstrap: [AppComponent],
 })
-export class AppModule {
-}
+export class AppModule {}
