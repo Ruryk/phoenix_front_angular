@@ -1,0 +1,117 @@
+:host {
+  max-width: 100%;
+  width: 100%;
+}
+
+.section-auth {
+  min-height: 100vh;
+  margin-bottom: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &__block {
+    max-width: 1300px;
+    width: 100%;
+    min-height: 710px;
+    border-radius: 50px;
+    border: 10px solid var(--main-auth);
+    padding: 20px;
+
+    .block__title {
+      color: var(--main-auth);
+      font-family: Aclonica;
+      font-size: 70px;
+      font-style: normal;
+      font-weight: 400;
+      line-height: normal;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .block__info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      .info__img {
+        display: block;
+        width: 100%;
+      }
+    }
+
+    .block__forms {
+      max-width: 650px;
+      width: 100%;
+      min-height: 460px;
+      border-radius: 50px;
+      border: 3px solid var(--main-auth);
+      padding: 50px;
+
+      .forms__item {
+        max-width: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+
+        .item__button {
+          width: 350px;
+          height: 70px;
+          background-color: var(--additional-auth);
+          border-radius: 20px;
+          border: none;
+          align-self: center;
+          color: var(--base-white);
+          font-family: Aclonica;
+          font-size: 30px;
+          font-style: normal;
+          font-weight: 400;
+          line-height: normal;
+          cursor: pointer;
+
+          &:hover {
+            background-color: var(--base-purple);
+            transition: 0.5s;
+          }
+
+          &:active {
+            opacity: 0.7;
+          }
+
+          &:disabled {
+            opacity: 0.2;
+
+            &:hover {
+              background-color: var(--additional-auth);
+            }
+          }
+        }
+
+        .item__checkbox {
+          margin-bottom: 20px;
+        }
+
+        .item__text {
+          opacity: 0.7;
+          color: var(--main);
+          font-family: Abhaya Libre SemiBold;
+          font-size: 25px;
+          font-style: normal;
+          line-height: normal;
+          text-align: center;
+          margin-top: 20px;
+        }
+
+        .text__span {
+          opacity: 1;
+          color: var(--main-auth);
+          cursor: pointer;
+
+          &:hover {
+            color: var(--additional-warn);
+          }
+        }
+      }
+    }
+  }
+}

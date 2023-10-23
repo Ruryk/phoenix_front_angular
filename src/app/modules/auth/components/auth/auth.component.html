@@ -1,1 +1,39 @@
-<p>auth works!</p>
+<section class="section-auth">
+  <div class="section-auth__block">
+    <h1 class="block__title">
+      {{signInPage ? ('SIGN_IN' | translate) : ('SIGN_UP' | translate)}}
+    </h1>
+    <div class="block__info">
+      <img
+        class="info__img"
+        [src]="signInPage ? 'assets\\scss\\images\\sign-in.png' : 'assets\\scss\\images\\sign-up.png'"
+        alt="image"
+      />
+
+      <div class="block__forms">
+        <form class="forms__item" [formGroup]="authForm"
+        >
+          <app-input [inputType]="'email'" [label]="'EMAIL'" [placeholder]="'ENTER_EMAIL'"
+                     formControlName="email" [needStyles]="true"></app-input>
+          <app-input [inputType]="'password'" [label]="'PASSWORD'" [placeholder]="'ENTER_PASSWORD'"
+                     formControlName="password" [needStyles]="true"></app-input>
+          <app-input *ngIf="!signInPage"
+                     [inputType]="'password'" [label]="'CONFIRM_PASSWORD'" [placeholder]="'CONFIRM_PASSWORD'"
+                     formControlName="confirmPassword" [needStyles]="true"></app-input>
+
+          <mat-checkbox *ngIf="signInPage" class="item__checkbox">{{'REMEMBER_ME' | translate}}</mat-checkbox>
+
+          <button [disabled]="!authForm.valid" (click)="login()" class="item__button" type="submit">
+            {{signInPage ? ('SIGN_IN' | translate) : ('SIGN_UP' | translate)}}
+          </button>
+
+          <p class="item__text">
+            {{signInPage ? ('DONT_HAVE_AN_ACCOUNT' | translate ): ('ALREADY_HAVE_AN_ACCOUNT' | translate)}}
+            <span (click)="navigateTo()" class="item__text text__span"
+            >{{signInPage ? ('SIGN_UP' | translate) : ('SIGN_IN' | translate)}}</span>
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,19 @@
+<div class="custom-input" *ngIf="!needStyles"
+     [ngClass]="control && (!control.valid && control.dirty) ? 'error-input' : ''">
+  <div class="input-wrap">
+    <mat-icon svgIcon="search"></mat-icon>
+    <input [type]="inputType" class="input" placeholder="{{placeholder | translate}}"
+           [(ngModel)]="_value" (ngModelChange)="onChange(_value)" (blur)="onTouch()">
+  </div>
+  <p *ngIf="control && (!control.valid && control.dirty)" class="error-input-text">{{getErrorMessage() | translate}}></p>
+</div>
+
+<mat-form-field class="item__field" *ngIf="needStyles"
+                [ngClass]="control && (!control.valid && control.dirty) ? 'error-input' : ''">
+  <mat-label>{{label | translate}}</mat-label>
+  <input [type]="inputType" matInput placeholder="{{placeholder | translate}}"
+         [(ngModel)]="_value" (ngModelChange)="onChange(_value)" (blur)="onTouch()"/>
+  <mat-hint *ngIf="control && (!control.valid && control.dirty)">
+    <mat-error>{{getErrorMessage() | translate}}</mat-error>
+  </mat-hint>
+</mat-form-field>
