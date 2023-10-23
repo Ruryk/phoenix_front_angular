@@ -13,5 +13,14 @@
   "REMEMBER_ME": "Remember me!",
   "THIS_VALUE_IS_REQUIRED": "This field is required",
   "MINIMIMUM_LENGTH_NOT_MET": "Minimum length not met",
-  "PASSWORDS_DO_NOT_MATCH": "Passwords do not match"
+  "PASSWORDS_DO_NOT_MATCH": "Passwords do not match",
+  "NOTIFICATIONS": "Notifications",
+  "FILE": "<bdi> ({{number}} file)</bdi>",
+  "UA_FAILU": "<bdi> ({{number}} files)</bdi>",
+  "FILES": "<bdi> ({{number}} files)</bdi>",
+  "RECENT_FILES": "Recent files",
+  "SHOW_MORE": "Show more",
+  "HIDE": "Hide",
+  "IMAGES": "Images",
+  "BLOCK": "Block"
 }

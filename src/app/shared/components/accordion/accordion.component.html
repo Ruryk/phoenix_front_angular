@@ -1,0 +1,46 @@
+<mat-accordion>
+  <mat-expansion-panel>
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <div class="panel-title">{{headLabel | translate}} </div>
+        <span *ngIf="subLabel" class="sub"
+              [innerHTML]="subLabel | translate: {number: panelData.length}"></span>
+      </mat-panel-title>
+    </mat-expansion-panel-header>
+
+    <ng-container [ngSwitch]="dataType">
+      <ng-container *ngSwitchCase="EAccordionFileType.files" [ngTemplateOutlet]="files"></ng-container>
+      <ng-container *ngSwitchCase="EAccordionFileType.images" [ngTemplateOutlet]="images"></ng-container>
+    </ng-container>
+
+  </mat-expansion-panel>
+</mat-accordion>
+
+
+<ng-template #files>
+  <div class="accordion-item" *ngFor="let file of visibleFiles">
+    <div class="accordion-item-file">
+      <mat-icon svgIcon="file"></mat-icon>
+      <p class="accordion-item-file-name">{{file.value}}</p>
+    </div>
+    <div class="accordion-item-action">
+      <mat-icon svgIcon="dots"></mat-icon>
+    </div>
+  </div>
+  <div class="show-more" *ngIf="panelData.length > visibleFiles.length" (click)="showMoreFiles()">
+    {{'SHOW_MORE' | translate}}
+  </div>
+  <div class="show-more" *ngIf="panelData.length === visibleFiles.length" (click)="hideFiles()">
+    {{'HIDE' | translate}}
+  </div>
+</ng-template>
+
+<ng-template #images>
+  <div class="accordion-images">
+    <div class="image-item" *ngFor="let image of visibleFiles; let i = index"
+         [ngClass]="(i === 5 && panelData.length > 5) ? 'show-more-images' : ''">
+      <img [src]="image.pictureUrl || ''">
+    <div class="show-images-action" *ngIf="i === 5 && panelData.length > 5">{{calcAdditionalImages()}}+</div>
+    </div>
+  </div>
+</ng-template>
