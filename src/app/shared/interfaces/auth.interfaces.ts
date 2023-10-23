@@ -5,6 +5,8 @@ export interface IAuthUser {
   password: string;
 }
 
+export type TStatuses = 'pending' | 'loading' | 'success' | 'error';
+
 export interface IAuthResponse {
   email: string;
   password: string;

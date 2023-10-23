@@ -1,39 +1,45 @@
-import { createAction, props } from '@ngrx/store';
-import { IAuthResponse, IAuthUser } from '../../shared/interfaces/auth.interfaces';
 import { HttpErrorResponse } from '@angular/common/http';
+import { createAction, props } from '@ngrx/store';
 
-export const SIGN_UP = '[AUTH] sign up';
-export const SIGN_UP_SUCCESS = '[AUTH] sign up success';
-export const SIGN_UP_FAILED = '[AUTH] sign up failed';
+import { IAuthUser } from 'src/app/shared/interfaces/auth.interfaces';
 
-export const SIGN_IN = '[AUTH] sign in';
-export const SIGN_IN_SUCCESS = '[AUTH] sign in success';
-export const SIGN_IN_FAILED = '[AUTH] sign in failed';
+enum EAuthActionTypes {
+  SIGN_IN = '[Auth] SignIn',
+  SIGN_IN_SUCCESS = '[Auth] SignIn Success',
+  SIGN_IN_FAIL = '[Auth] SignIn Failure',
 
-export const signUpAction = createAction(
-  SIGN_UP,
-  props<{ payload: IAuthUser }>()
-)
-export const signUpSuccessAction = createAction(
-  SIGN_UP_SUCCESS,
-  props<{ payload: IAuthResponse }>()
-)
+  SIGN_UP = '[Auth] SignUp',
+  SIGN_UP_SUCCESS = '[Auth] SignUp Success',
+  SIGN_UP_FAIL = '[Auth] SignUp Failure',
+}
+// Sign In
+export const signIn = createAction<EAuthActionTypes.SIGN_IN, IAuthUser>(
+  EAuthActionTypes.SIGN_IN,
+  props<IAuthUser>()
+);
 
-export const signUpFailedAction = createAction(
-  SIGN_UP_FAILED,
-  props<{ error: HttpErrorResponse }>()
-)
+export const signInSuccess = createAction<
+  EAuthActionTypes.SIGN_IN_SUCCESS,
+  any
+>(EAuthActionTypes.SIGN_IN_SUCCESS, props<any>());
 
-export const signInAction = createAction(
-  SIGN_IN,
-  props<{ payload: IAuthUser }>()
-)
-export const signInSuccessAction = createAction(
-  SIGN_IN_SUCCESS,
-  props<{ payload: IAuthResponse }>()
-)
+export const signInFailure = createAction<
+  EAuthActionTypes.SIGN_IN_FAIL,
+  { payload: HttpErrorResponse }
+>(EAuthActionTypes.SIGN_IN_FAIL, props<{ payload: HttpErrorResponse }>());
 
-export const signInFailedAction = createAction(
-  SIGN_IN_FAILED,
-  props<{ error: HttpErrorResponse }>()
-)
+//Sign Up
+export const signUp = createAction<EAuthActionTypes.SIGN_UP, IAuthUser>(
+  EAuthActionTypes.SIGN_UP,
+  props<IAuthUser>()
+);
+
+export const signUpSuccess = createAction<
+  EAuthActionTypes.SIGN_UP_SUCCESS,
+  any
+>(EAuthActionTypes.SIGN_UP_SUCCESS, props<any>());
+
+export const signUpFailure = createAction<
+  EAuthActionTypes.SIGN_UP_FAIL,
+  { payload: HttpErrorResponse }
+>(EAuthActionTypes.SIGN_UP_FAIL, props<{ payload: HttpErrorResponse }>());

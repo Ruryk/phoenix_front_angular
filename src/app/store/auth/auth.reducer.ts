@@ -1,52 +1,56 @@
-import { IAuthState } from '../../shared/interfaces/auth.interfaces';
 import { createReducer, on } from '@ngrx/store';
+import { HttpErrorResponse } from '@angular/common/http';
+
+import { TStatuses } from 'src/app/shared/interfaces/auth.interfaces';
 import {
-  signInAction,
-  signInFailedAction,
-  signInSuccessAction,
-  signUpAction, signUpFailedAction,
-  signUpSuccessAction
+  signIn,
+  signInFailure,
+  signInSuccess,
+  signUp,
+  signUpFailure,
+  signUpSuccess,
 } from './auth.actions';
 
-export const authFeatureKey = 'auth';
-export const initialAuthState: IAuthState = {
-  user: null,
-  isLoading: false,
-  error: null
+export interface IAuthState {
+  status: null | TStatuses;
+  error: null | HttpErrorResponse;
 }
+
+export const authFeatureKey = 'auth';
+
+export const initialAuthState: IAuthState = {
+  status: null,
+  error: null,
+};
 
 export const authReducer = createReducer(
   initialAuthState,
-  on(signInAction, (state) => ({
+
+  on(signIn, (state) => ({
     ...state,
-    isLoading: true,
-    error: null
+    status: 'loading ' as TStatuses,
   })),
-  on(signInSuccessAction, (state, {payload}) => ({
+  on(signInSuccess, (state) => ({
     ...state,
-    user: payload,
-    isLoading: false,
-    error: null
+    status: 'success' as TStatuses,
   })),
-  on(signInFailedAction, (state, {error}) => ({
+  on(signInFailure, (state, { payload }) => ({
     ...state,
-    isLoading: false,
-    error
+    status: 'error' as TStatuses,
+    payload,
   })),
-  on(signUpAction, (state) => ({
+
+  on(signUp, (state) => ({
     ...state,
-    isLoading: true,
-    error: null
+    status: 'loading ' as TStatuses,
   })),
-  on(signUpSuccessAction, (state, {payload}) => ({
+  on(signUpSuccess, (state) => ({
     ...state,
-    user: payload,
-    isLoading: false,
-    error: null
+    status: 'success' as TStatuses,
   })),
-  on(signUpFailedAction, (state, {error}) => ({
+  on(signUpFailure, (state, { payload }) => ({
     ...state,
-    isLoading: false,
-    error
-  })),
+    status: 'error' as TStatuses,
+    payload,
+  }))
 );

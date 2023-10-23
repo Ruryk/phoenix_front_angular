@@ -41,7 +41,7 @@
     }
 
     .block__forms {
-      max-width: 100%;
+      max-width: 650px;
       width: 100%;
       min-height: 460px;
       border-radius: 50px;
@@ -60,9 +60,7 @@
           background-color: var(--additional-auth);
           border-radius: 20px;
           border: none;
-
           align-self: center;
-
           color: var(--base-white);
           font-family: Aclonica;
           font-size: 30px;
@@ -70,6 +68,23 @@
           font-weight: 400;
           line-height: normal;
           cursor: pointer;
+
+          &:hover {
+            background-color: var(--base-purple);
+            transition: 0.5s;
+          }
+
+          &:active {
+            opacity: 0.7;
+          }
+
+          &:disabled {
+            opacity: 0.2;
+
+            &:hover {
+              background-color: var(--additional-auth);
+            }
+          }
         }
 
         .item__checkbox {

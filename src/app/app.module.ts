@@ -9,7 +9,7 @@ import { MainSidebarComponent } from './shared/components/main-sidebar/main-side
 import { MaterialModule } from './modules/material/materials.module';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
-import { environment } from '../environment/environment';
+import { environment } from 'src/environment/environment';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { MainComponent } from './shared/components/main/main.component';
 import { AppStoreModule } from './store/store.module';
@@ -23,7 +23,7 @@ export function HttpLoaderFactory(http: HttpClient) {
     AppComponent,
     MainSidebarComponent,
     MainComponent,
-    LoaderComponent
+    LoaderComponent,
   ],
   imports: [
     BrowserModule,
@@ -36,14 +36,13 @@ export function HttpLoaderFactory(http: HttpClient) {
       loader: {
         provide: TranslateLoader,
         useFactory: HttpLoaderFactory,
-        deps: [HttpClient, TransferState]
+        deps: [HttpClient, TransferState],
       },
-      defaultLanguage: environment.defaultLanguage
+      defaultLanguage: environment.defaultLanguage,
     }),
   ],
   exports: [TranslateModule],
   providers: [],
   bootstrap: [AppComponent],
 })
-export class AppModule {
-}
+export class AppModule {}

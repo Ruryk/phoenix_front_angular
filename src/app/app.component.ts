@@ -1,4 +1,7 @@
-import { Component } from '@angular/core';
+
+import { Component, OnInit, inject } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { selectLoaderIsOn } from './store/loader/loader.selectors';
 import { IconsService } from './services/icons.service';
 import { environment } from '../environment/environment';
 import { TranslateService } from '@ngx-translate/core';
@@ -9,6 +12,9 @@ import { TranslateService } from '@ngx-translate/core';
   styleUrls: ['./app.component.scss'],
 })
 export class AppComponent {
+  private readonly store: Store = inject(Store);
+
+  public isLoaderOn$ = this.store.select(selectLoaderIsOn);
 
   constructor(private iconService: IconsService,
               translate: TranslateService,
