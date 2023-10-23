@@ -1,0 +1,50 @@
+.custom-input {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  width: 100%;
+  padding-bottom: 20px;
+
+  .input-wrap {
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--additional-grey);
+    border-radius: 52px;
+    padding: 12px 20px;
+    gap: 10px;
+  }
+
+  .input {
+    outline: none;
+    background: transparent;
+    font-size: 16px;
+    border: none
+  }
+
+  input::placeholder {
+    color: var(--additional-grey);
+    font-size: 16px;
+  }
+}
+
+.error-input {
+  .input {
+    border: 1px solid var(--warn);
+
+    &:hover {
+      border: 1px solid var(--warn);
+    }
+  }
+
+  input::placeholder {
+    color: var(--warn);
+  }
+
+  &-text {
+    position: absolute;
+    bottom: 0;
+    left: 15px;
+    color: var(--warn);
+    font-size: 10px;
+  }
+}

@@ -1,9 +1,8 @@
-import { NgModule } from '@angular/core';
+import { NgModule, TransferState } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { StoreModule } from '@ngrx/store';
 import { EffectsModule } from '@ngrx/effects';
-import { HttpClientModule } from '@angular/common/http';
 import { provideStoreDevtools } from '@ngrx/store-devtools';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -13,17 +12,42 @@ import { AuthEffects } from './store/auth/auth.effects';
 import { LoaderEffects } from './store/loader/loader.effects';
 import { environment } from './environments/environment.prod';
 import { appState } from './store/app.state';
+import { MainSidebarComponent } from './shared/components/main-sidebar/main-sidebar.component';
+import { MaterialModule } from './modules/material/materials.module';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { environment } from '../environment/environment';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { MainComponent } from './shared/components/main/main.component';
+
+export function HttpLoaderFactory(http: HttpClient) {
+  return new TranslateHttpLoader(http, './assets/i18n/', '.json');
+}
 
 @NgModule({
-  declarations: [AppComponent, LoaderComponent],
+  declarations: [
+    AppComponent,
+    MainSidebarComponent,
+    MainComponent,
+    LoaderComponent
+  ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
+    MaterialModule,
     HttpClientModule,
     StoreModule.forRoot(appState),
     EffectsModule.forRoot([AuthEffects, LoaderEffects]),
   ],
+  TranslateModule.forRoot({
+      loader: {
+        provide: TranslateLoader,
+        useFactory: HttpLoaderFactory,
+        deps: [HttpClient, TransferState]
+      },
+      defaultLanguage: environment.defaultLanguage
+    }),
   providers: [
     provideStoreDevtools({
       maxAge: 25,
@@ -31,6 +55,8 @@ import { appState } from './store/app.state';
       autoPause: true,
     }),
   ],
+  exports: [TranslateModule],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule {
+}

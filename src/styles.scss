@@ -6,3 +6,29 @@
 * {
   box-sizing: border-box;
 }
+
+.btn {
+  width: 100%;
+  padding: 12px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  background-color: var(--main);
+  border: 1px solid transparent;
+  border-radius: 52px;
+  cursor: pointer;
+  transition: all .3s ease-in-out;
+
+  &:hover {
+    color: var(--main);
+    background-color: white;
+    border: 1px solid var(--main);
+
+    .mat-icon {
+      color: var(--main);
+    }
+  }
+}
