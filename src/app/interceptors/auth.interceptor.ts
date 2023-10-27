@@ -22,6 +22,7 @@ export class AuthInterceptor implements HttpInterceptor {
     return next.handle(request).pipe(
       catchError((error) => {
         if (error instanceof HttpErrorResponse && error.status === 401) {
+          localStorage.removeItem(EStorageKeys.LocalStorageTokenKey);
           this.router.navigate(['/auth']);
         }
         return throwError(() => error);
