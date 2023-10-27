@@ -1,0 +1,20 @@
+<div class="theme" *ngIf="!(isLoading$ | async)">
+  <div class="theme-title"></div>
+  <div class="theme-form" [formGroup]="themeForm">
+    <div class="theme-form-property">
+      <app-color-setting-input formControlName="mainColor" [label]="'MAIN_COLOR'"></app-color-setting-input>
+      <app-color-setting-input formControlName="textColor" [label]="'TEXT_COLOR'"></app-color-setting-input>
+    </div>
+
+    <div formArrayName="colors" class="theme-form-gradient">
+      <div class="theme-preview" [style.background]="calcTheme()"></div>
+      <div class="theme-form-colors">
+        <app-color-setting-input *ngFor="let control of colors.controls; let i = index"
+                                 [index]="i+1" [label]="'COLOR_NUM'" [formControlName]="i"></app-color-setting-input>
+      </div>
+    </div>
+
+  </div>
+
+  <button class="btn" (click)="applyTheme()">Accept</button>
+</div>

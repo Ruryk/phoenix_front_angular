@@ -24,10 +24,8 @@ const routes: Routes = [
       },
       {
         path: 'settings',
-        loadComponent: () =>
-          import('./modules/settings/settings.module').then(
-            (m) => m.SettingsModule
-          ),
+        loadChildren: () =>
+          import('./modules/settings/settings.module').then((m) => m.SettingsModule),
       }
     ]
   },

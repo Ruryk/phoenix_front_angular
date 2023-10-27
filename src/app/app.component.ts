@@ -1,5 +1,4 @@
-
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { selectLoaderIsOn } from './store/loader/loader.selectors';
 import { IconsService } from './services/icons.service';
@@ -14,6 +13,7 @@ import { TranslateService } from '@ngx-translate/core';
 export class AppComponent {
   private readonly store: Store = inject(Store);
 
+  public backgroundImg?: string;
   public isLoaderOn$ = this.store.select(selectLoaderIsOn);
 
   constructor(private iconService: IconsService,

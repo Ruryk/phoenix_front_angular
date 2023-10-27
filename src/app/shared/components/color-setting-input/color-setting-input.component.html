@@ -1,0 +1,9 @@
+<div class="color-input">
+  <div id="swatch">
+    <input type="color" id="color" name="color" [value]="value" (input)="changeColor($event)">
+    <div class="info">
+      <p *ngIf="index">{{label | translate : {number: index} }}</p>
+      <h2 *ngIf="!index">{{label | translate}}</h2>
+    </div>
+  </div>
+</div>
