@@ -35,6 +35,7 @@ export class InputComponent implements ControlValueAccessor, Validator {
   @Input() label: string = '';
   @Input() placeholder: string = '';
   @Input() inputType: string = 'text';
+  @Input() icon: string;
   public control: AbstractControl | null = null;
   public onChange: (p: any) => void = () => {};
   public onTouch: () => void = () => {};

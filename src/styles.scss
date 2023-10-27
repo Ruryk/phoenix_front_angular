@@ -15,8 +15,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
-  background-color: var(--main);
+  color: var(--main-text);
+  background: var(--main);
   border: 1px solid transparent;
   border-radius: 52px;
   cursor: pointer;
@@ -24,11 +24,11 @@
 
   &:hover {
     color: var(--main);
-    background-color: white;
+    background-color: var(--main-text);
     border: 1px solid var(--main);
 
     .mat-icon {
-      color: var(--main);
+      color: var(--theme-color);
     }
   }
 }

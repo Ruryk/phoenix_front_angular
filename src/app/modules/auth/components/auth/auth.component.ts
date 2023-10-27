@@ -31,13 +31,13 @@ export class AuthComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.initForm();
     this.checkIsUserAuthorized();
 
     this.currentRoute$
       .pipe(takeUntilDestroyed(this.destroyRef))
       .subscribe((data) => {
         this.signInPage = data === EAuthRoutes.signIn;
+        this.initForm();
       });
   }
 
@@ -46,12 +46,10 @@ export class AuthComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]]
     });
-
-    if (this.signInPage) {
+    if (!this.signInPage) {
       this.authForm.addControl('confirmPassword', this.fb.control('', [Validators.required, Validators.minLength(6)]));
       this.authForm.setValidators([this.passwordMatchValidator('password', 'confirmPassword')]);
     }
-    console.log(this.authForm)
   }
 
   passwordMatchValidator(controlName: string, matchingControlName: string): any {

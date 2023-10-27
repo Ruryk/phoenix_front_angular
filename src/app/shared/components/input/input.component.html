@@ -1,7 +1,7 @@
 <div class="custom-input" *ngIf="!needStyles"
      [ngClass]="control && (!control.valid && control.dirty) ? 'error-input' : ''">
   <div class="input-wrap">
-    <mat-icon svgIcon="search"></mat-icon>
+    <mat-icon *ngIf="icon" [svgIcon]="icon"></mat-icon>
     <input [type]="inputType" class="input" placeholder="{{placeholder | translate}}"
            [(ngModel)]="_value" (ngModelChange)="onChange(_value)" (blur)="onTouch()">
   </div>

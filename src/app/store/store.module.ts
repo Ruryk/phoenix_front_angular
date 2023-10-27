@@ -8,22 +8,26 @@ import { chatFeatureKey, chatReducer } from './chat/chat.reducer';
 import { ILoaderState, loaderFeatureKey, loaderReducer } from './loader/loader.reducer';
 import { IChatState } from '../modules/chat/interfaces/chat-user.interfaces';
 import { LoaderEffects } from './loader/loader.effects';
+import { ISettingsState, settingsFeatureKey, settingsReducer } from './settings/settings.reducer';
+import { SettingsEffects } from './settings/settings.effects';
 
 export interface IAppState {
   [authFeatureKey]: IAuthState;
   [loaderFeatureKey]: ILoaderState;
   [chatFeatureKey]: IChatState;
+  [settingsFeatureKey]: ISettingsState;
 }
 
 @NgModule({
   imports: [
     EffectsModule.forRoot([
-      AuthEffects, LoaderEffects
+      AuthEffects, LoaderEffects, SettingsEffects
     ]),
     StoreModule.forRoot({
       [authFeatureKey]: authReducer,
       [loaderFeatureKey]: loaderReducer,
       [chatFeatureKey]: chatReducer,
+      [settingsFeatureKey]: settingsReducer
     }),
     StoreDevtoolsModule.instrument({maxAge: 25}),
   ]

@@ -4,10 +4,9 @@
     <div class="sidebar-user-img">
       <img src="./assets/images/user-img.svg" imgDir loading="lazy">
     </div>
-    <div class="sidebar-nav-item" *ngFor="let tab of sidebarNav;let idx = index"
+    <div class="sidebar-nav-item" *ngFor="let tab of sidebarNav"
          [routerLink]="tab.path"
-         routerLinkActive="active"
-         [ngClass]="tab.isActive ? 'active' : ''">
+         routerLinkActive="active">
       <mat-icon [svgIcon]="tab.icon"></mat-icon>
     </div>
   </div>
@@ -15,8 +14,7 @@
   <app-lang-switcher></app-lang-switcher>
   <div class="sidebar-nav-bottom">
     <div class="sidebar-nav-item" *ngFor="let tab of sidebarBottomNav"
-         (click)="!tab ? logout() : goToPage(tab.path)"
-         [ngClass]="tab.isActive ? 'active' : ''">
+         (click)="!tab ? logout() : goToPage(tab.path)">
       <mat-icon [svgIcon]="tab.icon"></mat-icon>
     </div>
   </div>

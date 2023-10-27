@@ -22,5 +22,10 @@
   "SHOW_MORE": "Show more",
   "HIDE": "Hide",
   "IMAGES": "Images",
-  "BLOCK": "Block"
+  "BLOCK": "Block",
+  "MAIN_COLOR": "Main color",
+  "TEXT_COLOR": "Text color",
+  "ADD_COLOR": "Add color",
+  "REMOVE": "Remove",
+  "COLOR_NUM": "Color {{number}}"
 }
