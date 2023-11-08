@@ -14,6 +14,8 @@
       </div>
     </div>
 
+    <app-image-loader (uploadImage)="changeBackgroundImage($event)"></app-image-loader>
+
   </div>
 
   <button class="btn" (click)="applyTheme()">Accept</button>

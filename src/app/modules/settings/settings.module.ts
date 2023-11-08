@@ -8,6 +8,7 @@ import { MaterialModule } from '../material/materials.module';
 import { InputComponent } from '../../shared/components/input/input.component';
 import { ColorSettingInputComponent } from '../../shared/components/color-setting-input/color-setting-input.component';
 import { TranslateModule } from '@ngx-translate/core';
+import { ImageLoaderComponent } from '../../shared/components/image-loader/image-loader.component';
 
 @NgModule({
   declarations: [
@@ -22,6 +23,7 @@ import { TranslateModule } from '@ngx-translate/core';
     InputComponent,
     ColorSettingInputComponent,
     TranslateModule,
+    ImageLoaderComponent,
   ],
 })
 export class SettingsModule {

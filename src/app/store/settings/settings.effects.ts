@@ -43,7 +43,9 @@ export class SettingsEffects {
             this.themeService.toggleBackgroundColor(theme.backgroundColor);
             return changeThemeSettingsSuccess({payload: theme})
           }),
-          catchError((error) => of(changeThemeSettingsFailed({error})))
+          catchError((error) => {
+            console.log(error)
+            return of(changeThemeSettingsFailed({error}))})
         )
       )
     )

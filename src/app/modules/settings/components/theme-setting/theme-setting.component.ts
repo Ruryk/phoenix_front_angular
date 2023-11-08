@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { FormArray, FormBuilder, FormGroup } from '@angular/forms';
 import { ThemeService } from '../../../../services/theme.service';
-import { IThemeSettings } from '../../interfaces/theme.interfaces';
+import { IThemeSettingsForm } from '../../interfaces/theme.interfaces';
 import { Store } from '@ngrx/store';
 import { changeThemeSettings, getThemeSettings } from '../../../../store/settings/settings.actions';
 import { selectThemeLoading, selectThemeSettings } from '../../../../store/settings/settings.selectors';
@@ -31,7 +31,7 @@ export class ThemeSettingComponent implements OnInit {
     this.isLoading$ = this.store$.select(selectThemeLoading);
     this.store$.select(selectThemeSettings).subscribe({
       next: (theme) => {
-        if(!theme) return;
+        if (!theme) return;
         this.themeForm.controls['mainColor'].setValue(theme.mainColor);
         this.themeForm.controls['textColor'].setValue(theme.textColor);
         this.themeForm.controls['colors'].setValue(this.themeService.convertGradientToString(theme.backgroundColor));
@@ -43,14 +43,16 @@ export class ThemeSettingComponent implements OnInit {
     this.themeForm = this.fb.group({
       mainColor: ['#329993'],
       textColor: ['#ffffff'],
-      colors: this.fb.array(['#ffffff', '#ffffff', '#ffffff'])
+      colors: this.fb.array(['#ffffff', '#ffffff', '#ffffff']),
+      backgroundImage: [null]
     });
   }
 
   checkThemeColors(): void {
     this.themeForm.valueChanges.subscribe({
       next: form => {
-        this.themeService.toggleBackgroundColor(this.calcTheme());
+        const color = form.backgroundImage ?? this.calcTheme();
+        this.themeService.toggleBackgroundColor(color, form.backgroundImage);
         this.themeService.toggleMainColor(form.mainColor);
         this.themeService.toggleTextColor(form.textColor);
       }
@@ -67,12 +69,16 @@ export class ThemeSettingComponent implements OnInit {
   }
 
   applyTheme(): void {
-    const payload: IThemeSettings = {
+    const payload: IThemeSettingsForm = {
       mainColor: this.themeForm.value.mainColor,
       textColor: this.themeForm.value.textColor,
-      backgroundImage: null,
-      backgroundColor: this.calcTheme()
+      backgroundImage: this.themeForm.value.backgroundImage,
+      backgroundColor: this.calcTheme(),
     }
     this.store$.dispatch(changeThemeSettings({payload}));
+  }
+
+  changeBackgroundImage(file: File | null): void {
+    this.themeForm.controls['backgroundImage'].setValue(file);
   }
 }

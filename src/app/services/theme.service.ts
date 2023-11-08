@@ -2,7 +2,7 @@ import { inject, Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environment/environment';
 import { Observable } from 'rxjs';
-import { IThemeSettings } from '../modules/settings/interfaces/theme.interfaces';
+import { IThemeSettings, IThemeSettingsForm } from '../modules/settings/interfaces/theme.interfaces';
 
 export enum EVariablesColor {
   main = '--main',
@@ -22,8 +22,17 @@ export class ThemeService {
     return this.http.get<IThemeSettings>(`${this.apiUrl}settings/theme`);
   }
 
-  changeUserThemeSettings(theme: IThemeSettings): Observable<IThemeSettings> {
-    return this.http.post<IThemeSettings>(`${this.apiUrl}settings/theme`, theme);
+  changeUserThemeSettings(theme: IThemeSettingsForm): Observable<IThemeSettings> {
+    const formData = new FormData();
+    formData.append('mainColor', theme.mainColor);
+    formData.append('textColor', theme.textColor);
+    formData.append('backgroundColor', theme.backgroundColor);
+
+    if (theme.backgroundImage) {
+      formData.append('backgroundImage', theme.backgroundImage, theme.backgroundImage.name);
+    }
+
+    return this.http.post<IThemeSettings>(`${this.apiUrl}settings/theme`, formData);
   }
 
   toggleMainColor(color: string): void {
@@ -35,8 +44,9 @@ export class ThemeService {
     document.documentElement.style.setProperty(EVariablesColor.mainText, this.hexToRGB(color));
   }
 
-  toggleBackgroundColor(color: string): void {
-    document.documentElement.style.setProperty(EVariablesColor.mainBack, color);
+  toggleBackgroundColor(color: string, image?: boolean): void {
+    const value = image ? `url(${color})` : color;
+    document.documentElement.style.setProperty(EVariablesColor.mainBack, value);
   }
 
   hexToRGB(hexColor: string, opacity?: number): string {

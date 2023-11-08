@@ -1,0 +1,18 @@
+<div class="upload-field">
+  <div class="upload-box" *ngIf="!pictureUrl"></div>
+  <div class="logo-photo" *ngIf="pictureUrl">
+    <img [src]="pictureUrl" oncontextmenu="return false"  onError="src='../../../assets/img/logo.svg'" />
+  </div>
+  <div class="upload-complete">
+    <label for="input-upload" class="upload-btn" *ngIf="!fileName">
+      <input id="input-upload" #uploadInput type="file"
+             accept="image/x-png,image/svg+xml,image/jpeg"
+             class="input-upload" (change)="onUpload($event, uploadInput)" />
+      <span class="btn-choose">Choose Image</span>
+    </label>
+    <span class="upload-name" *ngIf="fileName">{{fileName}}</span>
+    <span class="upload-delete" (click)="removeImg()">Delete<i class="icon-delete"></i></span>
+  </div>
+  <div class="upload-desc"><bdi>Supported formats:  PNG, JPG</bdi></div>
+  <p class="error" *ngIf="errorMessage">{{errorMessage}}</p>
+</div>

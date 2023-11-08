@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { selectLoaderIsOn } from './store/loader/loader.selectors';
 import { IconsService } from './services/icons.service';
@@ -10,23 +10,27 @@ import { TranslateService } from '@ngx-translate/core';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
 })
-export class AppComponent {
+export class AppComponent implements OnInit {
   private readonly store: Store = inject(Store);
+  private readonly iconService: IconsService = inject(IconsService);
+  private readonly translate: TranslateService = inject(TranslateService);
 
   public backgroundImg?: string;
   public isLoaderOn$ = this.store.select(selectLoaderIsOn);
 
-  constructor(private iconService: IconsService,
-              translate: TranslateService,
-  ) {
+  constructor() {
 
     const langCode = localStorage.getItem('langCode') || 'uk';
 
-    translate.setDefaultLang(environment.defaultLanguage);
+    this.translate.setDefaultLang(environment.defaultLanguage);
     if (langCode) {
-      translate.use(langCode);
+      this.translate.use(langCode);
     }
 
-    iconService.registryIcons();
+    this.iconService.registryIcons();
+  }
+
+  ngOnInit() {
+
   }
 }

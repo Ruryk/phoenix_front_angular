@@ -1,5 +1,5 @@
 import { createAction, props } from '@ngrx/store';
-import { IThemeSettings } from '../../modules/settings/interfaces/theme.interfaces';
+import { IThemeSettings, IThemeSettingsForm } from '../../modules/settings/interfaces/theme.interfaces';
 import { HttpErrorResponse } from '@angular/common/http';
 
 enum ESettingsActionTypes {
@@ -28,7 +28,7 @@ export const getThemeSettingsFailed = createAction(
 
 export const changeThemeSettings = createAction(
   ESettingsActionTypes.CHANGE_THEME_SETTINGS,
-  props<{ payload: IThemeSettings }>()
+  props<{ payload: IThemeSettingsForm }>()
 )
 
 export const changeThemeSettingsSuccess = createAction(
