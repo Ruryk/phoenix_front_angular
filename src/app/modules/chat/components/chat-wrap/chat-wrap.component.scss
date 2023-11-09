@@ -1,3 +1,9 @@
 .chat-wrap-main {
   display: flex;
+  width: 90vw;
+  justify-content: space-between;
+}
+
+.full-width-content {
+  flex: 1;
 }

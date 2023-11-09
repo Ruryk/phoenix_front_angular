@@ -1,0 +1,26 @@
+<div class="chat-box">
+  <div class="chat-box-value">
+    <textarea [value]="value" (input)="typeText($event)"></textarea>
+  </div>
+  <div class="chat-box-actions">
+    <div class="actions-box border">
+      <mat-icon svgIcon="video-empty"></mat-icon>
+      <mat-icon svgIcon="microphone"></mat-icon>
+    </div>
+    <div class="actions-box">
+      <div class="emoji-box">
+        <div #icon>
+        <mat-icon svgIcon="emoji" (click)="emojiAvailable = !emojiAvailable"></mat-icon>
+        </div>
+        <div #emoji *ngIf="emojiAvailable"
+             appClickOutside (clickOutside)="emojiAvailable = false"
+             [excludeElements]="[emoji, icon]">
+          <emoji-mart [showPreview]="false"
+                      (emojiSelect)="selectEmoji($event)"
+          ></emoji-mart>
+        </div>
+      </div>
+      <mat-icon svgIcon="file-adding"></mat-icon>
+    </div>
+  </div>
+</div>

@@ -2,7 +2,7 @@ import { IChatUser } from '../modules/chat/interfaces/chat-user.interfaces';
 
 export const CMockUserCard: IChatUser = {
   id: '1',
-  pictureUrl: 'https://s3-alpha-sig.figma.com/img/5e9c/105e/930aea22bd61806331b237ae5a782e5b?Expires=1698019200&Signature=EGjxYmL9LKqJp8zUnMsGzOcQ2d0DmSuGlxhbch63xmnvjdZhCVFusZs4yuKUzZkTLMSp8ozL-g6m7i265EwzZfadcAGZiPEyjPcyF4uhyqvQCnWIw4wArZf4MOF5t62WKzBzTL-AGUYeJvx4w6Z37OXi3153zfIjuaXJF062Ox1v1C2lEa1BRgk5~tnQPbVKlJIYNobv49aoGhySjIH9~LKvfqoXwHlPZzobiudIXdoeWT8luC9F4aUAYwoRqpW0ixh3dkPWf0kbCi78R3Xa6oG700qKgmLE2erjc6z-r9noUfh2PWdekN12-yVLeCbZo7WDHj0g881GtK8qlQ6HQA__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4',
+  pictureUrl: 'https://s3-alpha-sig.figma.com/img/5e9c/105e/930aea22bd61806331b237ae5a782e5b?Expires=1700438400&Signature=cIAJwrc22s8Wu5Eqe6pWQPtKI8eTuBv9RupGtWEsQS8ETXA6nVuF9GyAJww-XoP4I3z6W4l8N526~SAlEGQnxAnqA7~X0HfQQiv90MeGhiLMu8x6vIk5QEZGJzHQWhgg4U~mFC5VPyBbxLmStlOc8fGqkXdEmkwe9~bJ3JmvAViQ5BWi7mle~fz~2UZxhHjupEYKMQpwlknHgJB5KbbErXfopAr1uFsAtwlTeE5HLSujadyAwpI8hIftN7gWho2RnIgfmbKMpv5KyVhlQxQzDiXljwxBEiAPRiy51v7s9uueXPdyfs7pbBzgkdwjgHvyUhFiaUdxZxysCTyVH-BvGQ__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4',
   userName: 'Robert Fox',
   userTagName: '@robert.fox12',
   notificationsAllowed: true,

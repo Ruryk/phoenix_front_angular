@@ -1,6 +1,6 @@
 .chat-bar {
   width: 320px;
-  border-right: 1px solid var(--additional-grey);
+  border-right: 1px solid var(--main-opacity);
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -17,7 +17,7 @@
     }
 
     &-icon {
-      color: var(--additional-grey);
+      color: var(--main);
       cursor: pointer;
     }
   }

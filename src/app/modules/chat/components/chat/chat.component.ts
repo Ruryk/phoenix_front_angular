@@ -5,4 +5,6 @@ import { Component } from '@angular/core';
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.scss'],
 })
-export class ChatComponent {}
+export class ChatComponent {
+  public isActive: boolean = true;
+}

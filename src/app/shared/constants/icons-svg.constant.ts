@@ -13,4 +13,9 @@ export const CSvgIcons = [
   {name: 'close', path: 'assets/images/icons/close.svg'},
   {name: 'file', path: 'assets/images/icons/file-icon.svg'},
   {name: 'block', path: 'assets/images/icons/block-icon.svg'},
+  {name: 'video', path: 'assets/images/icons/video-icon.svg'},
+  {name: 'video-empty', path: 'assets/images/icons/video-empty.svg'},
+  {name: 'microphone', path: 'assets/images/icons/microphone.svg'},
+  {name: 'emoji', path: 'assets/images/icons/emoji.svg'},
+  {name: 'file-adding', path: 'assets/images/icons/file-adding.svg'},
 ]

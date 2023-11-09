@@ -1,0 +1,52 @@
+.chat-box {
+  display: flex;
+  flex-direction: column;
+  border-radius: 20px;
+  border: 1px solid var(--main-opacity);
+  background: #ffffff;
+
+  &-value {
+    border-bottom: 1px solid var(--main-opacity);
+  }
+
+  &-actions {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    padding: 12px 20px;
+
+    .actions-box {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+
+      .emoji-box {
+        position: relative;
+
+        emoji-mart {
+          position: absolute;
+          bottom: 0;
+        }
+      }
+
+      .mat-icon {
+        color: var(--main);
+        cursor: pointer;
+      }
+    }
+
+    .border {
+      border-right: 2px solid var(--main-opacity);
+      padding-right: 10px;
+    }
+  }
+
+  textarea {
+    width: 100%;
+    resize: none;
+    outline: none;
+    padding: 25px;
+    border: none;
+    border-radius: 20px;
+  }
+}

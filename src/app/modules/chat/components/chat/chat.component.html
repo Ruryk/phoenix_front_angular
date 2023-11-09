@@ -1,0 +1,32 @@
+<div class="chat">
+  <div class="chat-head">
+    <div class="chat-head-user">
+      <div class="user-image">
+        <img
+          src="https://s3-alpha-sig.figma.com/img/5e9c/105e/930aea22bd61806331b237ae5a782e5b?Expires=1700438400&Signature=cIAJwrc22s8Wu5Eqe6pWQPtKI8eTuBv9RupGtWEsQS8ETXA6nVuF9GyAJww-XoP4I3z6W4l8N526~SAlEGQnxAnqA7~X0HfQQiv90MeGhiLMu8x6vIk5QEZGJzHQWhgg4U~mFC5VPyBbxLmStlOc8fGqkXdEmkwe9~bJ3JmvAViQ5BWi7mle~fz~2UZxhHjupEYKMQpwlknHgJB5KbbErXfopAr1uFsAtwlTeE5HLSujadyAwpI8hIftN7gWho2RnIgfmbKMpv5KyVhlQxQzDiXljwxBEiAPRiy51v7s9uueXPdyfs7pbBzgkdwjgHvyUhFiaUdxZxysCTyVH-BvGQ__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4">
+      </div>
+      <div class="user-info">
+        <div class="user-info-name">Robert Fox</div>
+        <div class="user-info-activity">
+          <div class="activity-icon" [ngStyle]="{'background': isActive ? 'green' : 'red'}"></div>
+          <div class="activity-text">Active now</div>
+        </div>
+      </div>
+    </div>
+    <div class="chat-head-actions">
+      <div class="action">
+        <mat-icon svgIcon="phone"></mat-icon>
+      </div>
+      <div class="action">
+        <mat-icon svgIcon="video"></mat-icon>
+      </div>
+      <div class="action">
+        <mat-icon svgIcon="dots"></mat-icon>
+      </div>
+    </div>
+  </div>
+
+  <div class="chat-box">
+    <app-chat-messaging></app-chat-messaging>
+  </div>
+</div>
